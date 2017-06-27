@@ -1,45 +1,35 @@
 {% load static %}
+{% if sliders %}
+    {% for slider in sliders %}
+     Slider Başlığı:   {{ slider.title }}<br>
+       Resim URLsi: {{ slider.photo.url }}<br>
+        Buton Linki:{{ slider.link1 }}<br>
+        Buton üzerindeki yazı:{{ slider.link1_title }}<br>
+        Buton 2 Linki:{{ slider.link2 }}<br>
+        Buton 2 Üzerindeki yazı:{{ slider.link2_title }}<br>
+    {% endfor %}
+{% endif %}
+{% if sliders %}
 <div class="wrapper">
   <div id="slider" class="clear">
     <div class="flexslider basicslider">
       <ul class="slides">
-        <li><img src="{% static 'img/slides/facilities_4.jpg' %}" alt="">
+          {% for slider in sliders %}
+        <li><img src="{{ slider.photo.url }}" alt="">
           <div class="txtoverlay">
             <div class="centralise">
               <div class="verticalwrap">
                 <article>
-                  <h2 class="heading uppercase">30 YILDIR SEKTÖRÜNÜN BURSA'DAKİ TEMSİLCİSİ</h2>
-                  <p><a class="btn orange pushright" href="#">REFERANSLARIMIZ</a> <a class="btn red" href="#">GALERİMİZ</a></p>
+                  <h2 class="heading uppercase">{{ slider.title }}</h2>
+                  <p><a class="btn orange pushright" href="{{ slider.link1 }}">{{ slider.link1_title }}</a> <a class="btn red" href="{{ slider.link2 }}">{{ slider.link2_title }}</a></p>
                 </article>
               </div>
             </div>
           </div>
         </li>
-        <li><img src="{% static 'img/slides/mutfak.jpg' %}" alt="">
-          <div class="txtoverlay">
-            <div class="centralise">
-              <div class="verticalwrap">
-                <article>
-                  <h2 class="heading uppercase">MUTFAK DOLAPLARI VE MASALARI EL İŞÇİLİĞİYLE YAPILMAKTADIR</h2>
-                  <p><a class="btn red" href="#">GALERİMİZ</a></p>
-                </article>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li><img src="{% static 'img/slides/bahçe.jpg' %}" alt="">
-          <div class="txtoverlay">
-            <div class="centralise">
-              <div class="verticalwrap">
-                <article>
-                  <h2 class="heading uppercase">DEMİR DOĞRAMADA İNCELİK VE HASSASİYET BİZİM İŞİMİZ</h2>
-                  <p><a class="btn orange pushright" href="#">REFERANSLARIMIZ</a> <a class="btn red" href="#">GALERİMİZ</a></p>
-                </article>
-              </div>
-            </div>
-          </div>
-        </li>
+          {% endfor %}
       </ul>
     </div>
   </div>
 </div>
+{% endif %}

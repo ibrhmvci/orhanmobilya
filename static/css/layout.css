@@ -59,7 +59,7 @@ File: Layout CSS
 ---------------------------------------------------------------------------------------------------------------*/
 .latest{display:block; width:100%; max-width:2000px; margin:0 auto;}
 .latest ul{}
-.latest ul li{display:block; float:left; width:20%; min-height:100%;}
+.latest ul li{display:block; float:left; width:20%;}
 .latest ul li:first-child, .latest ul li:nth-child(5n+1){margin-left:-1px; clear:left;}
 
 .latest ul li figure{display:block; max-width:100%; border:solid; border-width:0 0 0 1px;}

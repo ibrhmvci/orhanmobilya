@@ -1,47 +1,19 @@
 {% load static %}
+{% if galleries %}
 <div class="wrapper row2">
   <div class="latest">
     <ul class="nospace group">
+        {% for gallery in galleries %}
       <li>
-        <figure><a class="overlay" href="#"><img src="{% static 'img/latest/Furn_HO_Desk_main.jpg' %}" alt=""></a>
+        <figure><a class="overlay" href="#"><img src="{{ gallery.image.url }}" alt=""></a>
           <figcaption class="inspace-30 center">
-            <p class="bold uppercase">Mutfak Dolapları</p>
-            <p><a href="#">Devamı &raquo;</a></p>
+            <p class="bold uppercase">{{ gallery.title }}</p>
+            <p><a href="{{ gallery.link }}">Devamı &raquo;</a></p>
           </figcaption>
         </figure>
       </li>
-      <li>
-        <figure><a class="overlay" href="#"><img src="{% static 'img/latest/Bathroom Storage Furniture__bathroom_storage_FY17T2.jpg' %}" alt=""></a>
-          <figcaption class="inspace-30 center">
-            <p class="bold uppercase">Banyo Dolapları</p>
-            <p><a href="#">Devamı &raquo;</a></p>
-          </figcaption>
-        </figure>
-      </li>
-      <li>
-        <figure><a class="overlay" href="#"><img src="{% static 'img/latest/outdoor__outdoor_umbrellas_fy17.jpg' %}" alt=""></a>
-          <figcaption class="inspace-30 center">
-            <p class="bold uppercase">Bahçe İşleri</p>
-            <p><a href="#">Devamı &raquo;</a></p>
-          </figcaption>
-        </figure>
-      </li>
-      <li>
-        <figure><a class="overlay" href="#"><img src="{% static 'img/latest/baby__Crib_vn_250.jpg' %}" alt=""></a>
-          <figcaption class="inspace-30 center">
-            <p class="bold uppercase">El Yapımı Beşik</p>
-            <p><a href="#">Devamı &raquo;</a></p>
-          </figcaption>
-        </figure>
-      </li>
-      <li>
-        <figure><a class="overlay" href="#"><img src="{% static 'img/latest/wrought-iron-garden-furniture-250x250.jpg' %}" alt=""></a>
-          <figcaption class="inspace-30 center">
-            <p class="bold uppercase">Demir Doğrama</p>
-            <p><a href="#">Devamı &raquo;</a></p>
-          </figcaption>
-        </figure>
-      </li>
+        {% endfor %}
     </ul>
   </div>
 </div>
+{% endif %}

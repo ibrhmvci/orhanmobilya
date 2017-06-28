@@ -1,32 +1,51 @@
 {% load static %}
+
 <div class="wrapper row3">
   <main class="container nospace clear">
     <!-- main body -->
     <div class="group">
       <div class="one_half first paditout">
-        <h2 class="heading uppercase btmspace-50">BURADA HERŞEY SİZİN İÇİN... </h2>
+        <h2 class="heading uppercase btmspace-50">
+            {% if s_statics %}
+               {% for static in s_statics %}
+                   {{ static.service_title }}
+                {% endfor %}
+            {% endif %}
+            </h2>
+      {% if s_dynamics %}
         <ul class="nospace group">
+        {% for dynamic in s_dynamics %}
+            {% if forloop.counter == 1 %}
           <li class="btmspace-30">
             <article class="service largeicon"><i class="icon nobg circle fa fa-ra"></i>
-              <h6 class="heading"><a href="#">Kolay Ulaşım İmkanı</a></h6>
-              <p>İş bitene kadar değil memnuniyetiniz sağlanana kadar buradayız...</p>
+              <h6 class="heading"><a href="#">{{ dynamic.header }} </a></h6>
+              <p>{{ dynamic.content }}</p>
             </article>
           </li>
+            {% endif %}
+            {% if forloop.counter == 2 %}
           <li class="btmspace-30">
             <article class="service largeicon"><i class="icon nobg circle fa fa-female"></i>
-              <h6 class="heading"><a href="#">Servislerimiz sürekli sizinde</a></h6>
-              <p>İletişime geçmeniz akabinde servislerimiz yerinde inceleme yaparak en uygun işlemler için bilgi alırsınız</p>
+              <h6 class="heading"><a href="#">{{ dynamic.header }}</a></h6>
+              <p>{{ dynamic.content }}</p>
             </article>
           </li>
+            {% endif %}
+            {% if forloop.counter == 3 %}
           <li>
             <article class="service largeicon"><i class="icon nobg circle fa fa-history"></i>
-              <h6 class="heading"><a href="#">Satış sonrası destek..</a></h6>
-              <p>Ürünlerimiz her ne kadar garantili de olsa satış sonrası da hep yanınızdayız</p>
+              <h6 class="heading"><a href="#">{{ dynamic.header }}</a></h6>
+              <p>{{ dynamic.content }}</p>
             </article>
           </li>
+            {% endif %}
+        {% endfor %}
         </ul>
+      {% endif %}
       </div>
-      <div class="one_half"><a href="#"><img src="{% static 'img/Dining small.jpg' %}" alt=""></a></div>
+    {% for photo in s_statics %}
+      <div class="one_half"><a href="#"><img src="{{ photo.image.url }}" alt=""></a></div>
+    {% endfor %}
     </div>
     <!-- / main body -->
     <div class="clear"></div>

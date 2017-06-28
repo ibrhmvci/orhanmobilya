@@ -1,14 +1,5 @@
 {% load static %}
-{% if sliders %}
-    {% for slider in sliders %}
-     Slider Başlığı:   {{ slider.title }}<br>
-       Resim URLsi: {{ slider.photo.url }}<br>
-        Buton Linki:{{ slider.link1 }}<br>
-        Buton üzerindeki yazı:{{ slider.link1_title }}<br>
-        Buton 2 Linki:{{ slider.link2 }}<br>
-        Buton 2 Üzerindeki yazı:{{ slider.link2_title }}<br>
-    {% endfor %}
-{% endif %}
+
 {% if sliders %}
 <div class="wrapper">
   <div id="slider" class="clear">

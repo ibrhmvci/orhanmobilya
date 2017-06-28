@@ -1,38 +1,52 @@
 {% load static %}
+
+{% if posts %}
 <div class="wrapper row2">
   <div id="services" class="clear">
     <div class="group">
+        {% for post in posts %}
+            {% if  forloop.counter  == 1 %}
       <div class="one_third first">
         <article class="service"><i class="icon red circle fa fa-bell-o"></i>
-          <h2 class="heading">Mutfak Dolabı yaptırırken aklınızda bulunsun !</h2>
-          <p class="btmspace-10">Artık zamanının geldiğini mi düşünüyorsunuz? Yeni ve ferah bir ortam.</p>
-          <p><a href="#">Devamını Okuyun.. &raquo;</a></p>
+          <h2 class="heading">{{ post.title|truncatechars:50 }}</h2>
+          <p class="btmspace-10">{{ post.content|truncatechars:150 }}</p>
+          <p><a href="{{ post.get_absolute_url }}">Devamını okuyun &raquo;</a></p>
         </article>
       </div>
+            {% endif %}
+            {% if  forloop.counter  == 2 %}
       <div class="one_third">
         <article class="service"><i class="icon orange circle fa fa-bicycle"></i>
-          <h2 class="heading">Hızlı işçilik ve aynı zamanda kalite...</h2>
-          <p class="btmspace-10">Zaman herkes için çok önemli. Her türlü işinizi hızlıca hallederken kaliteden de ödün vermeyin..</p>
-          <p><a href="#">Devamını Okuyun.. &raquo;</a></p>
+          <h2 class="heading">{{ post.title|truncatechars:50 }}</h2>
+          <p class="btmspace-10">{{ post.content|truncatechars:150 }}</p>
+          <p><a href="{{ post.get_absolute_url }}">Devamını Okuyun.. &raquo;</a></p>
         </article>
       </div>
+            {% endif %}
+            {% if  forloop.counter  == 3 %}
       <div class="one_third">
         <article class="service"><i class="icon green circle fa fa-mortar-board"></i>
-          <h2 class="heading">İsimlerden daha önemli olan şeyler vardır! YETKİNLİK</h2>
-          <p class="btmspace-10">Uzmanlardan oluşan ekibimiz sayesinde memnuniyet garantisi veriyoruz...</p>
-          <p><a href="#">Devamını Okuyun.. &raquo;</a></p>
+          <h2 class="heading">{{ post.title|truncatechars:50 }}</h2>
+          <p class="btmspace-10">{{ post.content|truncatechars:150 }}</p>
+          <p><a href="{{ post.get_absolute_url }}">Devamını Okuyun.. &raquo;</a></p>
         </article>
       </div>
+            {% endif %}
+            {% endfor %}
     </div>
     <div class="clear"></div>
   </div>
 </div>
+{% endif %}
+
+{% for contact in contacts %}
 <div class="wrapper row6">
   <section id="cta" class="clear">
     <div class="three_quarter first">
-      <h2 class="heading">Arayın BİZ SİZE ulaşalım</h2>
-      <p>Hafta içi her gün 8:00-19:00 arası bize ulaşabilirsiniz..Adreslerimiz için hemen Tıklayın &raquo;</p>
+      <h2 class="heading">{{ contact.title }} </h2>
+      <p>{{ contact.content }} &raquo;</p>
     </div>
     <div class="one_quarter"><a class="btn" href="#">İLETİŞİM</a></div>
   </section>
 </div>
+{% endfor %}

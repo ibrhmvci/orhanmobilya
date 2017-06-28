@@ -14,15 +14,13 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='SliderImage',
+            name='MainGallery',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('photo', models.ImageField(upload_to='slider-images')),
-                ('title', models.CharField(max_length=250)),
-                ('link1', models.CharField(max_length=250)),
-                ('link1_title', models.CharField(max_length=25)),
-                ('link2', models.CharField(max_length=250)),
-                ('link2_title', models.CharField(max_length=25)),
+                ('title', models.CharField(max_length=30, verbose_name='Başlık')),
+                ('content', models.TextField(verbose_name='İçerik Bilgisi')),
+                ('image', models.ImageField(upload_to='', verbose_name='Galerinin Ana Resmi')),
+                ('link', models.URLField(verbose_name='Link')),
             ],
         ),
     ]

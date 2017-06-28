@@ -1,19 +1,24 @@
 {% load static %}
 <div class="wrapper row4">
   <footer id="footer" class="clear">
+      {% if informations %}
+          {% for information in informations %}
     <div class="one_quarter first">
       <h6 class="title">Firma Bilgileri</h6>
       <address class="btmspace-15">
-      Orhan Mobilya<br>
-      Çınarönü Mahallesi<br>
-      Yıldırım<br>
-      16380
+      {{ information.address }}
       </address>
       <ul class="nospace">
-        <li class="btmspace-10"><span class="fa fa-phone"></span> +00 (224) 456 7890</li>
-        <li><span class="fa fa-envelope-o"></span> info@orhanmobilya.com</li>
+          {% if information.phone_number %}
+        <li class="btmspace-10"><span class="fa fa-phone">{{ information.phone_number }}</span></li>
+          {% endif %}
+        {% if information.email %}
+        <li><span class="fa fa-envelope-o"></span> {{ information.email }}</li>
+      {% endif %}
       </ul>
     </div>
+          {% endfor %}
+      {% endif %}
     <div class="one_quarter">
       <h6 class="title">Menu</h6>
       <ul class="nospace linklist">
@@ -41,14 +46,19 @@
           <button type="submit" value="submit">Gönder</button>
         </fieldset>
       </form>
+        {% if socials %}
       <ul class="faico clear">
-        <li><a class="faicon-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-        <li><a class="faicon-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-        <li><a class="faicon-linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-        <li><a class="faicon-google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
-        <li><a class="faicon-instagram" href="#"><i class="fa fa-instagram"></i></a></li>
-        <li><a class="faicon-tumblr" href="#"><i class="fa fa-tumblr"></i></a></li>
+      {% for social in socials %}
+
+        {% if social.facebook %}<li><a class="faicon-facebook" href="{{ social.facebook }}"><i class="fa fa-facebook"></i></a></li>{% endif %}
+        {% if social.twitter %}<li><a class="faicon-twitter" href="{{ social.twitter }}"><i class="fa fa-twitter"></i></a></li>{% endif %}
+        {% if social.linkedin %}<li><a class="faicon-linkedin" href="{{ social.linkedin }}"><i class="fa fa-linkedin"></i></a></li>{% endif %}
+        {% if social.google_plus %}<li><a class="faicon-google-plus" href="{{ social.google_plus }}"><i class="fa fa-google-plus"></i></a></li>{% endif %}
+        {% if social.instagram %}<li><a class="faicon-instagram" href="{{ social.instagram }}"><i class="fa fa-instagram"></i></a></li>{% endif %}
+        {% if social.tumblr %}<li><a class="faicon-tumblr" href="{{ social.tumblr }}"><i class="fa fa-tumblr"></i></a></li>{% endif %}
+      {% endfor %}
       </ul>
+        {% endif %}
     </div>
   </footer>
 </div>
